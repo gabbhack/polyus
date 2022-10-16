@@ -1,0 +1,23 @@
+version: "3"
+services:
+  backend:
+    restart: always
+    ports:
+      - "8000:8000"
+
+    build: backend
+
+    volumes:
+      - ./test:/usr/src/app/test
+
+    environment:
+      DOMAIN: 127.0.0.1:8000
+      PORT: 8000
+      BIG_SIZE: 500
+      VIDEO_PATH: /usr/src/app/test/test.mp4
+
+  frontend:
+    restart: always
+    ports:
+      - "3000:3000"
+    build: frontend
